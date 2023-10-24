@@ -1,19 +1,18 @@
 defmodule Gotham.Gestion.User do
-	use Ecto.Schema
-	import Ecto.Changeset
+  use Ecto.Schema
+  import Ecto.Changeset
 
-	schema "users" do
-		field :username, :string
-		field :email, :string
+  schema "users" do
+    field :username, :string
+    field :email, :string
 
-		timestamps(type: :utc_datetime)
-	end
+    timestamps(type: :utc_datetime)
+  end
 
-	@doc false
-	def changeset(user, attrs) do
-		user
-		|> cast(attrs, [:username, :email])
-		|> validate_required([:username, :email])
-		|> validate_format(:email, ~r/@/) # Validation de format pour l'email
-	end
+  @doc false
+  def changeset(user, attrs) do
+    user
+    |> cast(attrs, [:email, :username])
+    |> validate_required([:email, :username])
+  end
 end

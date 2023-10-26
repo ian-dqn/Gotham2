@@ -26,6 +26,7 @@ defmodule GothamWeb.Router do
 		 resources "/users", UserController, except: [:new, :edit]
 		 resources "/clocks", ClockController, except: [:new, :edit]
 		 resources "/working_times", WorkingTimeController, except: [:new, :edit]
+		 get "/api/users", Gotham.GestionController, :get_user_by_email_and_username
 
 	end
 

@@ -47,5 +47,16 @@ defmodule GothamWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
-  plug GothamWeb.Router
+	plug Corsica,
+			 origins: "http://localhost:8080", # Spécifiez l'origine à partir de laquelle les requêtes CORS sont autorisées
+			 allow_headers: :all, # Vous pouvez personnaliser les autres options CORS selon vos besoins
+			 allow_methods: :all,
+			 protocol_options: [
+				 max_header_name_length: 64,
+				 max_header_value_length: 4096,
+				 max_headers: 100,
+				 max_request_line_length: 8096
+			 ],
+			 allow_credentials: true
+	plug GothamWeb.Router
 end

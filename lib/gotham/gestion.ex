@@ -13,9 +13,8 @@ defmodule Gotham.Gestion do
 
 	## Examples
 
-	    iex> list_users()
-	    [%User{}, ...]
-
+	iex> list_users()
+	[%User{}, ...]
 	"""
 	def list_users do
 		Repo.all(User)
@@ -28,12 +27,11 @@ defmodule Gotham.Gestion do
 
 	## Examples
 
-	    iex> get_user!(123)
-	    %User{}
+	iex> get_user!(123)
+	%User{}
 
-	    iex> get_user!(456)
-	    ** (Ecto.NoResultsError)
-
+	iex> get_user!(456)
+	** (Ecto.NoResultsError)
 	"""
 	def get_user!(id), do: Repo.get!(User, id)
 
@@ -42,12 +40,11 @@ defmodule Gotham.Gestion do
 
 	## Examples
 
-	    iex> create_user(%{field: value})
-	    {:ok, %User{}}
+	iex> create_user(%{field: value})
+	{:ok, %User{}}
 
-	    iex> create_user(%{field: bad_value})
-	    {:error, %Ecto.Changeset{}}
-
+	iex> create_user(%{field: bad_value})
+	{:error, %Ecto.Changeset{}}
 	"""
 	def create_user(attrs \\ %{}) do
 		%User{}
@@ -60,12 +57,11 @@ defmodule Gotham.Gestion do
 
 	## Examples
 
-	    iex> update_user(user, %{field: new_value})
-	    {:ok, %User{}}
+	iex> update_user(user, %{field: new_value})
+	{:ok, %User{}}
 
-	    iex> update_user(user, %{field: bad_value})
-	    {:error, %Ecto.Changeset{}}
-
+	iex> update_user(user, %{field: bad_value})
+	{:error, %Ecto.Changeset{}}
 	"""
 	def update_user(%User{} = user, attrs) do
 		user
@@ -78,12 +74,11 @@ defmodule Gotham.Gestion do
 
 	## Examples
 
-	    iex> delete_user(user)
-	    {:ok, %User{}}
+	iex> delete_user(user)
+	{:ok, %User{}}
 
-	    iex> delete_user(user)
-	    {:error, %Ecto.Changeset{}}
-
+	iex> delete_user(user)
+	{:error, %Ecto.Changeset{}}
 	"""
 	def delete_user(%User{} = user) do
 		Repo.delete(user)
@@ -94,9 +89,8 @@ defmodule Gotham.Gestion do
 
 	## Examples
 
-	    iex> change_user(user)
-	    %Ecto.Changeset{data: %User{}}
-
+	iex> change_user(user)
+	%Ecto.Changeset{data: %User{}}
 	"""
 	def change_user(%User{} = user, attrs \\ %{}) do
 		User.changeset(user, attrs)
@@ -109,9 +103,8 @@ defmodule Gotham.Gestion do
 
 	## Examples
 
-	    iex> list_clocks()
-	    [%Clock{}, ...]
-
+	iex> list_clocks()
+	[%Clock{}, ...]
 	"""
 	def list_clocks do
 		Repo.all(Clock)
@@ -124,12 +117,11 @@ defmodule Gotham.Gestion do
 
 	## Examples
 
-	    iex> get_clock!(123)
-	    %Clock{}
+	iex> get_clock!(123)
+	%Clock{}
 
-	    iex> get_clock!(456)
-	    ** (Ecto.NoResultsError)
-
+	iex> get_clock!(456)
+	** (Ecto.NoResultsError)
 	"""
 	def get_clock!(id), do: Repo.get!(Clock, id)
 
@@ -138,12 +130,11 @@ defmodule Gotham.Gestion do
 
 	## Examples
 
-	    iex> create_clock(%{field: value})
-	    {:ok, %Clock{}}
+	iex> create_clock(%{field: value})
+	{:ok, %Clock{}}
 
-	    iex> create_clock(%{field: bad_value})
-	    {:error, %Ecto.Changeset{}}
-
+	iex> create_clock(%{field: bad_value})
+	{:error, %Ecto.Changeset{}}
 	"""
 	def create_clock(attrs \\ %{}) do
 		%Clock{}
@@ -156,12 +147,11 @@ defmodule Gotham.Gestion do
 
 	## Examples
 
-	    iex> update_clock(clock, %{field: new_value})
-	    {:ok, %Clock{}}
+	iex> update_clock(clock, %{field: new_value})
+	{:ok, %Clock{}}
 
-	    iex> update_clock(clock, %{field: bad_value})
-	    {:error, %Ecto.Changeset{}}
-
+	iex> update_clock(clock, %{field: bad_value})
+	{:error, %Ecto.Changeset{}}
 	"""
 	def update_clock(%Clock{} = clock, attrs) do
 		clock
@@ -174,12 +164,11 @@ defmodule Gotham.Gestion do
 
 	## Examples
 
-	    iex> delete_clock(clock)
-	    {:ok, %Clock{}}
+	iex> delete_clock(clock)
+	{:ok, %Clock{}}
 
-	    iex> delete_clock(clock)
-	    {:error, %Ecto.Changeset{}}
-
+	iex> delete_clock(clock)
+	{:error, %Ecto.Changeset{}}
 	"""
 	def delete_clock(%Clock{} = clock) do
 		Repo.delete(clock)
@@ -190,9 +179,8 @@ defmodule Gotham.Gestion do
 
 	## Examples
 
-	    iex> change_clock(clock)
-	    %Ecto.Changeset{data: %Clock{}}
-
+	iex> change_clock(clock)
+	%Ecto.Changeset{data: %Clock{}}
 	"""
 	def change_clock(%Clock{} = clock, attrs \\ %{}) do
 		Clock.changeset(clock, attrs)
@@ -205,9 +193,8 @@ defmodule Gotham.Gestion do
 
 	## Examples
 
-	    iex> list_working_times()
-	    [%WorkingTime{}, ...]
-
+	iex> list_working_times()
+	[%WorkingTime{}, ...]
 	"""
 	def list_working_times do
 		Repo.all(WorkingTime)
@@ -220,9 +207,8 @@ defmodule Gotham.Gestion do
 
 	## Examples
 
-	    iex> get_working_time!(123)
-	    %WorkingTime{}
-
+	iex> get_working_time!(123)
+	%WorkingTime{}
 	"""
 	def get_working_time!(id), do: Repo.get!(WorkingTime, id)
 
@@ -231,29 +217,28 @@ defmodule Gotham.Gestion do
 
 	## Examples
 
-	    iex> create_working_time(%{field: value})
-	    {:ok, %WorkingTime{}}
+	iex> create_working_time(%{field: value})
+	{:ok, %WorkingTime{}}
 
-	    iex> create_working_time(%{field: bad_value})
-	    {:error, ...}
-
+	iex> create_working_time(%{field: bad_value})
+	{:error, ...}
 	"""
 	def create_working_time(attrs \\ %{}) do
 		%WorkingTime{}
 		|> WorkingTime.changeset(attrs)
-		|> Repo.insert()  end
+		|> Repo.insert()
+	end
 
 	@doc """
 	Updates a working_time.
 
 	## Examples
 
-	    iex> update_working_time(working_time, %{field: new_value})
-	    {:ok, %WorkingTime{}}
+	iex> update_working_time(working_time, %{field: new_value})
+	{:ok, %WorkingTime{}}
 
-	    iex> update_working_time(working_time, %{field: bad_value})
-	    {:error, ...}
-
+	iex> update_working_time(working_time, %{field: bad_value})
+	{:error, ...}
 	"""
 	def update_working_time(%WorkingTime{} = working_time, attrs) do
 		working_time
@@ -266,12 +251,11 @@ defmodule Gotham.Gestion do
 
 	## Examples
 
-	    iex> delete_working_time(working_time)
-	    {:ok, %WorkingTime{}}
+	iex> delete_working_time(working_time)
+	{:ok, %WorkingTime{}}
 
-	    iex> delete_working_time(working_time)
-	    {:error, ...}
-
+	iex> delete_working_time(working_time)
+	{:error, ...}
 	"""
 	def delete_working_time(%WorkingTime{} = working_time) do
 		Repo.delete(working_time)
@@ -282,13 +266,44 @@ defmodule Gotham.Gestion do
 
 	## Examples
 
-	    iex> change_working_time(working_time)
-	    %Todo{...}
-
+	iex> change_working_time(working_time)
+	%Todo{...}
 	"""
-	def change_working_time(%WorkingTime{} = working_time, _attrs \\ %{}) do
-		WorkingTime.changeset(working_time, _attrs)
+	def change_working_time(%WorkingTime{} = working_time, attrs \\ %{}) do
+		WorkingTime.changeset(working_time, attrs)
 	end
 
+	@doc """
+	Checks if a user exists by email and username.
 
+	Returns true if the user exists, otherwise false.
+
+	## Examples
+
+	iex> check_user_exists("user@example.com", "john_doe")
+	true
+
+	iex> check_user_exists("nonexistent@example.com", "unknown_user")
+	false
+	"""
+	def check_user_exists(email, username) do
+		case Repo.get_by(User, email: email, username: username) do
+			nil -> false
+			_ -> true
+		end
+	end
+
+	def get_user_by_email_and_username(conn, %{"email" => email, "username" => username}) do
+		case Gotham.Gestion.get_user_by_email_and_username(email, username) do
+			nil ->
+				conn
+				|> Conn.put_status(:not_found)  # Utilisez Conn.put_status/2
+				|> Conn.send_resp(:not_found, "")  # Par exemple, pour renvoyer une réponse vide en cas de non-trouvée
+
+			user ->
+				conn
+				|> Conn.put_status(:ok)  # Utilisez Conn.put_status/2
+				|> Conn.json(user)  # Utilisez Conn.json/2 pour renvoyer des données JSON
+		end
+	end
 end

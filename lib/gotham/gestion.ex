@@ -68,6 +68,20 @@ defmodule Gotham.Gestion do
 		|> User.changeset(attrs)
 		|> Repo.update()
 	end
+  @doc """
+    Get user by username and email
+  """
+  def get_user_by_email_and_username(email, username) do
+
+    case Repo.get_by(User, email: email, username: username) do
+
+      nil -> {:error, :not_found}
+
+      user -> {:ok, user}
+
+    end
+
+  end
 
 	@doc """
 	Deletes a user.
@@ -293,17 +307,5 @@ defmodule Gotham.Gestion do
 		end
 	end
 
-	def get_user_by_email_and_username(conn, %{"email" => email, "username" => username}) do
-		case Gotham.Gestion.get_user_by_email_and_username(email, username) do
-			nil ->
-				conn
-				|> Conn.put_status(:not_found)  # Utilisez Conn.put_status/2
-				|> Conn.send_resp(:not_found, "")  # Par exemple, pour renvoyer une réponse vide en cas de non-trouvée
 
-			user ->
-				conn
-				|> Conn.put_status(:ok)  # Utilisez Conn.put_status/2
-				|> Conn.json(user)  # Utilisez Conn.json/2 pour renvoyer des données JSON
-		end
-	end
 end

@@ -5,6 +5,8 @@ defmodule GothamWeb.UserController do
   alias Gotham.Gestion.User
 	alias Plug.Conn
 
+  # alias Gotham.Gestion.Gestion
+
   action_fallback GothamWeb.FallbackController
 
   def index(conn, _params) do
@@ -19,6 +21,26 @@ defmodule GothamWeb.UserController do
       |> put_resp_header("location", ~p"/api/users/#{user}")
       |> render(:show, user: user)
     end
+  end
+
+  def get_user_by_email_and_username(conn, %{"email" => email, "username" => username}) do
+
+    with {:ok, user} <- Gestion.get_user_by_email_and_username(email, username) do
+
+      render(conn, :show, user: user)
+
+    else
+
+      {:error, :not_found} ->
+
+        conn
+
+        |> put_status(:not_found)
+
+        |> json(%{error: "user with email: #{email} and username: #{username} not found"})
+
+    end
+
   end
 
   def show(conn, %{"id" => id}) do

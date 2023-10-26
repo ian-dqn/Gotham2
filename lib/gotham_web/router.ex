@@ -23,10 +23,15 @@ defmodule GothamWeb.Router do
   # Other scopes may use custom stacks.
    scope "/api", GothamWeb do
      pipe_through :api
-		 resources "/users", UserController, except: [:new, :edit]
+     #resources "/users", UserController, except: [:new, :edit]
 		 resources "/clocks", ClockController, except: [:new, :edit]
 		 resources "/working_times", WorkingTimeController, except: [:new, :edit]
-		 get "/api/users", Gotham.GestionController, :get_user_by_email_and_username
+
+		 get("/users", UserController, :get_user_by_email_and_username)
+     get("/users/:id", UserController, :show)
+     post("/users", UserController, :create)
+     put("/users/:id", UserController, :update)
+     delete("/users/:id", UserController, :delete)
 
 	end
 

@@ -15,6 +15,6 @@ defmodule Gotham.Gestion.Clock do
 		clock
 		|> cast(attrs, [:time, :status, :user_id])
 		|> validate_required([:time, :status, :user_id])
-		|> validate_inclusion(:status, [true], message: "must be true when clocking in")
+		|> validate_inclusion(:status, [true], message: "Must be true when clocking in")
 	end
 end

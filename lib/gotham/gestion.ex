@@ -4,6 +4,7 @@ defmodule Gotham.Gestion do
 	"""
 
 	import Ecto.Query, warn: false
+  #use Ecto.Schema
 	alias Gotham.Repo
 
 	alias Gotham.Gestion.User
@@ -139,6 +140,13 @@ defmodule Gotham.Gestion do
 	"""
 	def get_clock!(id), do: Repo.get!(Clock, id)
 
+
+  def get_all_clock_by_userid(user_id) do
+    Clock
+    |> where([c], c.user_id == ^user_id)
+    |> Repo.all()
+  end
+
 	@doc """
 	Creates a clock.
 
@@ -225,6 +233,12 @@ defmodule Gotham.Gestion do
 	%WorkingTime{}
 	"""
 	def get_working_time!(id), do: Repo.get!(WorkingTime, id)
+
+  def get_all_workingTime_by_userid(user_id) do
+    WorkingTime
+    |> where([w], w.user_id == ^user_id)
+    |> Repo.all()
+  end
 
 	@doc """
 	Creates a working_time.

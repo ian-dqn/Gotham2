@@ -24,14 +24,28 @@ defmodule GothamWeb.Router do
    scope "/api", GothamWeb do
      pipe_through :api
      #resources "/users", UserController, except: [:new, :edit]
-		 resources "/clocks", ClockController, except: [:new, :edit]
-		 resources "/working_times", WorkingTimeController, except: [:new, :edit]
+		 #resources "/clocks", ClockController, except: [:new, :edit]
+		 #resources "/working_times", WorkingTimeController, except: [:new, :edit]
 
 		 get("/users", UserController, :get_user_by_email_and_username)
+     get("/usersAll", UserController, :index)
      get("/users/:id", UserController, :show)
      post("/users", UserController, :create)
      put("/users/:id", UserController, :update)
      delete("/users/:id", UserController, :delete)
+
+
+     get("/clocksAll", ClockController, :index)
+     get("/clocks/:user_id", ClockController, :get_all_clock_by_userid)
+     get("/clocks/data/:id", ClockController, :show)
+     post("/clocks", ClockController, :create)
+
+     get("/working_times/:user_id", WorkingTimeController, :get_all_workingTime_by_userid)
+     #get("/working_times", WorkingTimeController, :index)
+     #get("/working_times/:user_id", WorkingTimeController, :show)
+     post("/working_times/:user_id", WorkingTimeController, :create)
+     put("/working_times/:id", WorkingTimeController, :update)
+     delete("/working_times/:id", WorkingTimeController, :delete)
 
 	end
 

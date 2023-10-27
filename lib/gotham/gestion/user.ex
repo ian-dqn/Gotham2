@@ -14,5 +14,7 @@ defmodule Gotham.Gestion.User do
     user
     |> cast(attrs, [:email, :username])
     |> validate_required([:email, :username])
+    |> validate_format(:email, ~r/@/) # Validation de format pour l'email
+
   end
 end

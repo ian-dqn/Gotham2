@@ -240,6 +240,12 @@ defmodule Gotham.Gestion do
     |> Repo.all()
   end
 
+  def get_working_time_by_id(user_id,id) do
+    WorkingTime
+    |> where([w], w.user_id == ^user_id  and w.id == ^id)
+    |> Repo.all()
+  end
+
 	@doc """
 	Creates a working_time.
 

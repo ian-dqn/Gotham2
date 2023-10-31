@@ -38,7 +38,7 @@ defmodule GothamWeb.Router do
      get("/clocksAll", ClockController, :index)
      get("/clocks/:user_id", ClockController, :get_all_clock_by_userid)
      get("/clocks/data/:id", ClockController, :show)
-     post("/clocks", ClockController, :create)
+     post("/clocks/:user_id", ClockController, :create)
 
      get("/working_timesAll", WorkingTimeController, :index)
      get("/working_times/:user_id", WorkingTimeController, :get_all_workingTime_by_userid)

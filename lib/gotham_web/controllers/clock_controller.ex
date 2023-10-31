@@ -11,8 +11,19 @@ defmodule GothamWeb.ClockController do
     render(conn, :index, clocks: clocks)
   end
 
-  def create(conn, %{"clock" => clock_params}) do
-    with {:ok, %Clock{} = clock} <- Gestion.create_clock(clock_params) do
+  def create(conn, %{"clock" => clock_params, "user_id" => user_id}) do
+    #Logger.debug("user id : #{user_id}")
+    last_clock = Gestion.get_last_clock(user_id)
+    clockin = if last_clock do
+      # if there is already a clock we change the status
+      last_clock.status == false
+    else
+      true
+    end
+
+    #Logger.debug("clockin : #{clockin}")
+
+    with {:ok, %Clock{} = clock} <- Gestion.create_clock(Map.merge(clock_params, %{"status" => clockin, "user_id" => user_id})) do
       conn
       |> put_status(:created)
       |> put_resp_header("location", ~p"/api/clocks/#{clock}")

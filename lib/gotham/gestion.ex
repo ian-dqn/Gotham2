@@ -158,11 +158,21 @@ defmodule Gotham.Gestion do
 	iex> create_clock(%{field: bad_value})
 	{:error, %Ecto.Changeset{}}
 	"""
+
+  def get_last_clock(user_id) do
+    Clock
+    |> where([c], c.user_id == ^user_id)
+    |> last
+    |> Repo.one
+  end
+
 	def create_clock(attrs \\ %{}) do
 		%Clock{}
 		|> Clock.changeset(attrs)
 		|> Repo.insert()
 	end
+
+
 
 	@doc """
 	Updates a clock.

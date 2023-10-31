@@ -11,11 +11,11 @@ defmodule GothamWeb.WorkingTimeController do
     render(conn, :index, working_times: working_times)
   end
 
-  def create(conn, %{"working_time" => working_time_params}) do
-    with {:ok, %WorkingTime{} = working_time} <- Gestion.create_working_time(working_time_params) do
+  def create(conn, %{"user_id" => user_id, "working_time" => working_time_params}) do
+    with {:ok, %WorkingTime{} = working_time} <- Gestion.create_working_time(Map.merge(working_time_params, %{"user_id" => user_id})) do
       conn
       |> put_status(:created)
-      |> put_resp_header("location", ~p"/api/working_times/#{working_time}")
+      |> put_resp_header("location", ~s"/api/working_times/#{working_time.id}")
       |> render(:show, working_time: working_time)
     end
   end

@@ -147,6 +147,7 @@ defmodule Gotham.Gestion do
     |> Repo.all()
   end
 
+
 	@doc """
 	Creates a clock.
 
@@ -244,11 +245,17 @@ defmodule Gotham.Gestion do
 	"""
 	def get_working_time!(id), do: Repo.get!(WorkingTime, id)
 
-  def get_all_workingTime_by_userid(user_id) do
+  def get_all_workingTime_by_userid(user_id, debut, fin) do
     WorkingTime
-    |> where([w], w.user_id == ^user_id)
+    |> where([w], w.user_id == ^user_id and w.start >= ^debut and w.end <= ^fin)
     |> Repo.all()
   end
+
+    def get_all_wt(user_id) do
+      WorkingTime
+      |> where([w], w.user_id == ^user_id)
+      |> Repo.all()
+    end
 
   def get_working_time_by_id(user_id,id) do
     WorkingTime

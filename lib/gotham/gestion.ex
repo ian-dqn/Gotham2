@@ -4,6 +4,7 @@ defmodule Gotham.Gestion do
 	"""
 
 	import Ecto.Query, warn: false
+	require Logger
   #use Ecto.Schema
 	alias Gotham.Repo
 
@@ -168,6 +169,7 @@ defmodule Gotham.Gestion do
   end
 
 	def create_clock(attrs \\ %{}) do
+		#Logger.debug("att in create clock fct : #{attrs}")
 		%Clock{}
 		|> Clock.changeset(attrs)
 		|> Repo.insert()
@@ -245,9 +247,16 @@ defmodule Gotham.Gestion do
 	"""
 	def get_working_time!(id), do: Repo.get!(WorkingTime, id)
 
-  def get_all_workingTime_by_userid(user_id, debut, fin) do
+	def get_all_workingTime_by_userid(user_id) do
     WorkingTime
-    |> where([w], w.user_id == ^user_id and w.start >= ^debut and w.end <= ^fin)
+    |> where([w], w.user_id == ^user_id)
+    |> Repo.all()
+  end
+
+  def get_all_workingTime_by_userid_and_time(user_id, startDate, endDate) do
+		Logger.debug("\n\n date#{startDate}\n\n")
+    WorkingTime
+    |> where([w], w.user_id == ^user_id and w.start >= ^startDate and w.end <= ^endDate)
     |> Repo.all()
   end
 

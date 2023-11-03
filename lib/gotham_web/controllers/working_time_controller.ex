@@ -25,8 +25,13 @@ defmodule GothamWeb.WorkingTimeController do
     render(conn, :show, working_time: working_time)
   end
 
-  def get_all_workingTime_by_userid(conn, %{"user_id" => user_id, "start" => debut, "end" => fin}) do
-    working_times = Gestion.get_all_workingTime_by_userid(user_id, debut, fin)
+  def get_all_workingTime_by_userid(conn, %{"user_id" => user_id}) do
+    working_times = Gestion.get_all_workingTime_by_userid(user_id)
+    render(conn, :index, working_times: working_times)
+  end
+
+  def get_all_workingTime_by_userid_and_time(conn, %{"user_id" => user_id, "start" => startDate, "end" => endDate}) do
+    working_times = Gestion.get_all_workingTime_by_userid_and_time(user_id, startDate, endDate)
     render(conn, :index, working_times: working_times)
   end
 
